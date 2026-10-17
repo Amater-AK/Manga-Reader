@@ -1,19 +1,17 @@
+import { createBrowserRouter, RouterProvider } from "react-router";
+
 import { ThemeProvider } from "./providers/ThemeProvider";
 
-import { Test } from "@/shared/components/Test";
+import { routes } from "./routes";
 
-import { ThemeSelector } from "@/shared/components/ThemeSelector";
+const router = createBrowserRouter(routes, {
+    basename: import.meta.env.BASE_URL,
+});
 
 export function App() {
     return (
         <ThemeProvider>
-            <p className="text-amber-500">Hello</p>
-
-            <p className="text-text-primary">Test text</p>
-
-            <Test />
-
-            <ThemeSelector />
+            <RouterProvider router={router} />
         </ThemeProvider>
     );
 }
