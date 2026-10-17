@@ -1,26 +1,23 @@
 import { useState, createContext, useContext } from "react";
 
-interface SelectorSwitchContext {
-    selectedOption: string;
-    selectOption: (option: string) => void;
+interface SelectorSwitchContext<T> {
+    selectedOption: T;
+    selectOption: (option: T) => void;
 }
 
-const SelectorSwitchContext = createContext<SelectorSwitchContext>({
-    selectedOption: "",
-    selectOption: () => {},
-});
+const SelectorSwitchContext = createContext<unknown>(null);
 
-interface SelectorSwitchProps {
+interface SelectorSwitchProps<T> {
     children: React.ReactNode;
-    initial: string;
+    initial: T;
     className: string;
-    onChange: (selectedOption: string) => void;
+    onChange: (selectedOption: T) => void;
 }
 
-export function SelectorSwitch({ children, initial, className, onChange }: SelectorSwitchProps) {
-    const [selectedOption, setSelectedOption] = useState<string>(initial);
+export function SelectorSwitch<T>({ children, initial, className, onChange }: SelectorSwitchProps<T>) {
+    const [selectedOption, setSelectedOption] = useState<T>(initial);
 
-    function handleSelect(option: string) {
+    function handleSelect(option: T) {
         setSelectedOption(option);
         onChange(option);
     }
@@ -32,21 +29,27 @@ export function SelectorSwitch({ children, initial, className, onChange }: Selec
     );
 }
 
-interface SelectorSwitchOptionProps {
+interface SelectorSwitchOptionProps<T> {
     children: React.ReactNode;
     id: string;
-    value: string;
+    value: T;
     title?: string;
     className: string | ((isSelected: boolean) => string);
 }
 
-function SelectorSwitchOption({ children, id, value, title, className }: SelectorSwitchOptionProps) {
-    const { selectedOption, selectOption } = useSelectorSwitch();
+function SelectorSwitchOption<T extends string | number>({
+    children,
+    id,
+    value,
+    title,
+    className,
+}: SelectorSwitchOptionProps<T>) {
+    const { selectedOption, selectOption } = useSelectorSwitch<T>();
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { value } = event.target;
 
-        selectOption(value);
+        selectOption(value as unknown as T);
     }
 
     const isSelected = selectedOption === value;
@@ -65,14 +68,14 @@ function SelectorSwitchOption({ children, id, value, title, className }: Selecto
     );
 }
 
-function useSelectorSwitch() {
+function useSelectorSwitch<T>() {
     const ctx = useContext(SelectorSwitchContext);
 
     if (!ctx) {
         throw new Error("SelectorSwitch.Option child elements must be used within a parent SelectorSwitch component.");
     }
 
-    return ctx;
+    return ctx as SelectorSwitchContext<T>;
 }
 
 SelectorSwitch.Option = SelectorSwitchOption;

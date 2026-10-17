@@ -1,8 +1,5 @@
 import { createContext } from "react";
 
-import { type ThemeContextProps, THEMES } from "./types";
+import { type ThemeContextProps } from "./types";
 
-export const ThemeContext = createContext<ThemeContextProps>({
-    theme: THEMES.SYSTEM,
-    setTheme: () => {},
-});
+export const ThemeContext = createContext<ThemeContextProps | null>(null);
