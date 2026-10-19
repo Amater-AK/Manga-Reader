@@ -32,6 +32,7 @@
     --color-neutral-950: oklch(14.5% 0 0);
 
     --color-sand-200: #f7ebd5;
+    --color-sand-500: #fbbf24;
 
     --color-indigo-50: #eef2ff;
     --color-indigo-100: #e0e7ff;
@@ -82,6 +83,8 @@
 
     /* Additional */
     --color-focus-ring: var(--color-indigo-300);
+
+    --color-rating-star: var(--color-sand-500);
 
     --shadow-sm: 0 1px 2px rgb(15 23 42 / 6%);
 

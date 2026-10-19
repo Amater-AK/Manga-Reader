@@ -1,3 +1,5 @@
+import { MangaCatalog } from "@/features/manga-catalog";
+
 export function CatalogPage() {
     return (
         <>
@@ -12,7 +14,7 @@ export function CatalogPage() {
                 <div className="wrapper">
                     <h1 className="mb-2">Manga Catalog</h1>
 
-                    <p>Catalog</p>
+                    <MangaCatalog />
                 </div>
             </section>
         </>
