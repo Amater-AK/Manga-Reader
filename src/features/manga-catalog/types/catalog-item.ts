@@ -1,9 +1,3 @@
-import { type CatalogItemCover } from "./catalog-item-cover";
+import { type Manga } from "@/shared/types";
 
-export interface CatalogItem {
-    id: string;
-    type: string;
-    name: string;
-    slug: string;
-    cover: CatalogItemCover;
-}
+export type CatalogItem = Pick<Manga, "id" | "type" | "name" | "slug" | "cover" | "rating">;

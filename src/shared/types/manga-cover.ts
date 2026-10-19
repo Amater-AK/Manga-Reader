@@ -3,4 +3,5 @@ export interface MangaCover {
     thumbnail: string;
     default: string;
     original: string;
+    color: string;
 }
