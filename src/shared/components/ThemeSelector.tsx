@@ -16,7 +16,7 @@ export function ThemeSelector() {
     function getClassNames(isSelected: boolean) {
         const classes = [
             "p-1 cursor-pointer rounded-sm transition-colors duration-300",
-            `${isSelected ? "text-action-primary-text bg-action-primary-bg-hover" : "hover:bg-action-secondary-bg-hover"}`,
+            `${isSelected ? "text-action-primary-text bg-action-primary-bg-hover" : "hover:bg-action-secondary-bg-hover active:bg-action-secondary-bg-hover"}`,
         ];
 
         return classes.join(" ");
