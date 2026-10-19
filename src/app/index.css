@@ -31,7 +31,7 @@
     --color-neutral-900: oklch(20.5% 0 0);
     --color-neutral-950: oklch(14.5% 0 0);
 
-    --color-orange-200: #f7ebd5;
+    --color-sand-200: #f7ebd5;
 
     --color-indigo-50: #eef2ff;
     --color-indigo-100: #e0e7ff;
@@ -54,7 +54,7 @@
     /* Light Theme */
     --color-bg-primary: var(--color-neutral-300);
     --color-bg-secondary: var(--color-neutral-100);
-    --color-bg-tertiary: var(--color-orange-200);
+    --color-bg-tertiary: var(--color-sand-200);
 
     --color-text-primary: var(--color-neutral-800);
     --color-text-secondary: var(--color-neutral-600);
@@ -134,6 +134,12 @@
     button,
     a {
         @apply focus-visible:outline-2 focus-visible:outline-focus-ring focus-visible:outline-offset-2;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-semibold text-base md:text-lg;
     }
 }
 
