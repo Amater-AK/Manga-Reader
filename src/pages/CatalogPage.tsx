@@ -1,3 +1,9 @@
 export function CatalogPage() {
-    return <h1>Catalog Page</h1>;
+    return (
+        <>
+            <h1>Catalog Page</h1>
+            <br />
+            <button>123</button>
+        </>
+    );
 }
