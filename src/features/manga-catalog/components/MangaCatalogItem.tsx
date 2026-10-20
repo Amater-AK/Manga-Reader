@@ -15,7 +15,7 @@ export function MangaCatalogItem({ item }: MangaCatalogItemProps) {
 
     return (
         <article className="flex flex-col gap-1 p-1 bg-surface-base border border-border-default rounded-sm transition-colors duration-300 hover:border-border-hover active:border-border-hover">
-            <Link to={url}>
+            <Link to={url} className="rounded-sm overflow-hidden">
                 <Image
                     ratio={1.4}
                     color={item.cover.color}
