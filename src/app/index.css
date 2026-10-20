@@ -18,6 +18,7 @@
 
     --color-white: #ffffff;
     --color-black: #000000;
+    --color-transparent: transparent;
 
     --color-neutral-50: oklch(98.5% 0 0);
     --color-neutral-100: oklch(97% 0 0);
@@ -81,12 +82,26 @@
     --color-action-secondary-text: var(--color-neutral-600);
     --color-action-secondary-border: var(--color-neutral-300);
 
+    --color-action-ghost-bg: var(--color-transparent);
+    --color-action-ghost-bg-hover: var(--color-indigo-50);
+    --color-action-ghost-text: var(--color-indigo-700);
+    --color-action-ghost-border: var(--color-transparent);
+
+    --color-field-bg: var(--color-white);
+    --color-field-text: var(--color-neutral-900);
+    --color-field-placeholder: var(--color-neutral-500);
+    --color-field-border: var(--color-neutral-300);
+    --color-field-border-hover: var(--color-neutral-400);
+    --color-field-border-focus: var(--color-indigo-600);
+    --color-field-ring: var(--color-indigo-100);
+
     /* Additional */
     --color-focus-ring: var(--color-indigo-300);
 
     --color-rating-star: var(--color-sand-500);
 
     --shadow-sm: 0 1px 2px rgb(15 23 42 / 6%);
+    --shadow-field-ring: 0 0 0 3px var(--color-field-ring);
 
     --gradient-brand: linear-gradient(135deg, var(--color-indigo-500) 0%, var(--color-purple-500) 100%);
 
@@ -128,6 +143,19 @@
             --color-action-secondary-bg-hover: var(--color-neutral-700);
             --color-action-secondary-text: var(--color-neutral-200);
             --color-action-secondary-border: var(--color-neutral-600);
+
+            --color-action-ghost-bg: var(--color-transparent);
+            --color-action-ghost-bg-hover: var(--color-neutral-700);
+            --color-action-ghost-text: var(--color-indigo-200);
+            --color-action-ghost-border: var(--color-transparent);
+
+            --color-field-bg: var(--color-neutral-900);
+            --color-field-text: var(--color-neutral-50);
+            --color-field-placeholder: var(--color-neutral-400);
+            --color-field-border: var(--color-neutral-700);
+            --color-field-border-hover: var(--color-neutral-500);
+            --color-field-border-focus: var(--color-indigo-400);
+            --color-field-ring: var(--color-indigo-900);
         }
     }
 }
@@ -156,6 +184,30 @@
 @layer components {
     .icon {
         @apply shrink-0;
+    }
+
+    .button {
+        @apply inline-flex justify-center items-center gap-2  whitespace-nowrap border rounded-md cursor-pointer transition-colors duration-300 disabled:cursor-not-allowed;
+    }
+
+    .button--primary {
+        @apply text-action-primary-text bg-action-primary-bg border border-action-primary-border hover:bg-action-primary-bg-hover active:bg-action-primary-bg-hover;
+    }
+
+    .button--secondary {
+        @apply text-action-secondary-text bg-action-secondary-bg border border-action-secondary-border hover:bg-action-secondary-bg-hover active:bg-action-secondary-bg-hover;
+    }
+
+    .button--ghost {
+        @apply text-action-ghost-text bg-action-ghost-bg border border-action-ghost-border hover:bg-action-ghost-bg-hover active:bg-action-ghost-bg-hover;
+    }
+
+    .button--only-icon {
+        @apply p-[0.3em];
+    }
+
+    .button--wide {
+        @apply w-full;
     }
 }
 

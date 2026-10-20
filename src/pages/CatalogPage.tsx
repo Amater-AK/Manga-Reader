@@ -1,3 +1,6 @@
+import { useMangaSearch } from "@/features/manga-search";
+
+import { MangaSearch } from "@/features/manga-search";
 import { MangaCatalog } from "@/features/manga-catalog";
 
 import { type CatalogItem } from "@/features/manga-catalog/types/catalog-item";
@@ -39,6 +42,10 @@ const DUMMY_CATALOG: CatalogItem[] = [
 ];
 
 export function CatalogPage() {
+    const { searchQuery, searchRegex, onChangeQuery } = useMangaSearch();
+
+    const filteredCatalog = DUMMY_CATALOG.filter((manga) => searchRegex.test(manga.name));
+
     return (
         <>
             <h1 className="sr-only">Manga Catalog</h1>
@@ -47,7 +54,7 @@ export function CatalogPage() {
                 <div className="wrapper flex justify-between items-center gap-4">
                     <h2 className="sr-only">Catalog configuration</h2>
 
-                    <p>Search</p>
+                    <MangaSearch onSubmit={onChangeQuery} />
                     <p>Filters</p>
                 </div>
             </section>
@@ -56,7 +63,7 @@ export function CatalogPage() {
                 <div className="wrapper">
                     <h2 className="sr-only">Catalog</h2>
 
-                    <MangaCatalog items={DUMMY_CATALOG} />
+                    <MangaCatalog items={filteredCatalog} />
                 </div>
             </section>
         </>
